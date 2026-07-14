@@ -5,14 +5,13 @@ import cookieParser from "cookie-parser";
 import passport from "./config/passport.js"
 import cors from 'cors';
 import config from "./config/config.js";
-import dns from 'dns';
+
 const app = express();
 app.set('trust proxy', 1);
 app.use(cors({
   origin: config.CLIENT_URL,
   credentials: true 
 }));
-dns.setDefaultResultOrder('ipv4first');
 app.use(express.json());
 app.use(morgan("dev"));
 app.use(passport.initialize());
