@@ -5,8 +5,6 @@ import cookieParser from "cookie-parser";
 import passport from "./config/passport.js"
 import cors from 'cors';
 import config from "./config/config.js";
-import dns from 'dns';
-dns.setDefaultResultOrder('ipv4first');
 
 const app = express();
 app.set('trust proxy', 1);
