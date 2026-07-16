@@ -1,5 +1,6 @@
 import nodemailer from 'nodemailer';
 import config from '../config/config.js';
+import axios from 'axios';
 
 const sendEmail = async ({ email, subject, message }) => {
   try {
@@ -8,7 +9,7 @@ const sendEmail = async ({ email, subject, message }) => {
       {
         sender: {
           name: "Asif",
-          email: config.SENDER_EMAIL,
+          email: config.EMAIL_USER,
         },
         to: [
           {
@@ -38,6 +39,9 @@ const sendEmail = async ({ email, subject, message }) => {
     } else {
       console.error(error.message);
     }
+
+    // Propagate the failure so the route does not report a successful send.
+    throw error;
 
   }
 };

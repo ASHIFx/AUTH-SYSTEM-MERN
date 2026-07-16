@@ -21,7 +21,7 @@ const config = {
     GOOGLE_CALLBACK_URL:process.env.GOOGLE_CALLBACK_URL,
     CLIENT_URL:process.env.CLIENT_URL,
     EMAIL_USER:process.env.EMAIL_USER,
-    EMAIL_PASS:process.env.EMAIL_PASS
+    BREVO_API_KEY: process.env.BREVO_API_KEY,
 }
 
 export default config;

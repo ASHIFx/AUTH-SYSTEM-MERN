@@ -41,7 +41,7 @@ export async function register(req,res){
         expiresAt: new Date(Date.now() + 5 * 60 * 1000)
     })
 
-    await sendEmail(email,"OTP verification", `Your OTP code is ${otp}`, html)
+    await sendEmail({ email, subject: "OTP verification", message: html })
 
     res.status(201).json({
         message:`user registered successfully, OTP ${otp} sent to ${email}`,
@@ -324,7 +324,7 @@ export async function resendOtp(req, res) {
         expiresAt: new Date(Date.now() + 5 * 60 * 1000)
     })
 
-    await sendEmail(email, "Your OTP", `Your OTP is ${otp}`, html)
+    await sendEmail({ email, subject: "Your OTP", message: html })
 
     res.status(200).json({ message: `OTP ${otp} resent successfully`})
 }
@@ -394,7 +394,7 @@ export async function forgotPassword(req, res) {
         expiresAt: new Date(Date.now() + 5 * 60 * 1000)
     });
 
-    await sendEmail(email, "Password Reset OTP", `Your OTP is ${otp}`, html);
+    await sendEmail({ email, subject: "Password Reset OTP", message: html });
 
     res.status(200).json({ message: `OTP sent to ${email}` });
 }
