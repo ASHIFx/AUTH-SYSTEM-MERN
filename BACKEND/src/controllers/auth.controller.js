@@ -3,7 +3,7 @@ import crypto from "crypto";
 import jwt from "jsonwebtoken";
 import config from "../config/config.js";
 import sessionModel from "../models/session.model.js";
-import {sendEmail} from "../services/email.services.js"
+import sendEmail from "../services/email.services.js"
 import { genOTP,getOtpHtml } from "../utils/util.js";
 import otpModel from "../models/otp.model.js";
 
