@@ -26,10 +26,6 @@ const SignUp = () => {
             newErrors.firstname = "First name is required";
         }
 
-        if (!lastname.trim()) {
-            newErrors.lastname = "Last name is required";
-        }
-
         if (!email.trim()) {
             newErrors.email = "Email is required";
         } else if (!emailRegex.test(email)) {
@@ -51,7 +47,7 @@ const SignUp = () => {
 
         setLoading(true);
         try {
-            const username = firstname + " " + lastname;
+            const username = lastname.trim() ? `${firstname.trim()} ${lastname.trim()}` : firstname.trim();
             await registerUser(username, email, password);
             navigate('/verify-email', { state: { email } });
         } catch (err) {
@@ -85,10 +81,7 @@ const SignUp = () => {
                                 )}
                             </div>
                             <div>
-                                <InputField label="Last Name" type="text" placeholder="Enter Last Name" value={lastname} onChange={(e) => setLastname(e.target.value)} />
-                                {errors.lastname && (
-                                    <p className="text-red-500 text-xs mt-1">{errors.lastname}</p>
-                                )}
+                                <InputField label="Last Name (Optional)" type="text" placeholder="Enter Last Name" value={lastname} onChange={(e) => setLastname(e.target.value)} />
                             </div>
                         </div>
                         <div>
